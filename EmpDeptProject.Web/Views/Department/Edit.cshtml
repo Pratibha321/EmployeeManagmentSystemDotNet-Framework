@@ -1,0 +1,52 @@
+﻿@model EmpDeptProject.Models.Models.Department
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit View</h1>
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-info">Edit Department</h2>
+            <hr />
+
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>@*//iside div only it works*@
+        <div class="mb-3 ">
+            <label asp-for="DeptId"></label>
+            <input asp-for="DeptId" readonly  class="form-control" />
+         @*   <span asp-validation-for="DeptName" class="text-danger"></span>*@
+
+
+
+            <label asp-for="DeptName"></label>
+            <input asp-for="DeptName" class="form-control" />
+            <span asp-validation-for="DeptName" class="text-danger"></span>
+            @*  @Html.ValidationMessageFor(m=>m.CategoryName,"Name can not be more than 20 character");
+            *@
+        </div>
+
+       @* <div class="mb-3 ">
+            <label asp-for="DisplayOrder"></label>
+            <input asp-for="DisplayOrder" class="form-control" />
+            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 ">
+            <label asp-for="CreateDateTime"></label>
+            <input asp-for="CreateDateTime" type="date" class="form-control " />
+        </div>*@
+
+        <button type="submit" class="btn btn-success" style="width:100px">Update</button>
+        <a asp-controller="Department" asp-action="Index" class="btn btn-primary">Back</a>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />@*//partial is element tag helper*@
+}
+
+
+

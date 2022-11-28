@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EmpDeptProject.Models.Models.Employee>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<partial name="_AlertPartial" />
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6 ">
+            <h3 class="text-danger">Employee List</h3>
+
+        </div>
+        <div class="col-6 text-danger text-end">
+            <a asp-controller="Employee" asp-action="Create" class="btn btn-info"><i class="bi bi-plus"></i>Create Department</a>
+        </div>
+    </div>
+</div>
+
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+            <th>Department Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td><a asp-controller="Employee" asp-action="Details" asp-route-id="@c.EmpId">@c.EmpId</a></td>
+  
+                <td>@c.EmpName</td>
+                <td>@c.EmpSalary</td>
+                @*<td>@c.Departments.DeptName</td>*@
+                <td>@c.Departments.DeptName</td>
+                <td>
+                    <div class="btn-group m-75" role="group">
+                        <a asp-controller="Employee" asp-action="Edit" asp-route-id="@c.EmpId" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+
+
+                        <a asp-controller="Employee" asp-action="Delete" asp-route-id="@c.EmpId" class="btn btn-outline-info"><i class="bi bi-trash3"></i></a>
+
+
+
+                    </div>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+

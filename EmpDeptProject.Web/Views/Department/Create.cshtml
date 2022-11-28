@@ -1,0 +1,45 @@
+﻿@model EmpDeptProject.Models.Models.Department //able to access properties of model class
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+@*@Html.ActionLink //Action link
+<a></a>//tag helper
+*@
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-info">Create Department</h2>
+            <hr />
+
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>@*//iside div only it works*@
+        <div class="mb-3 ">
+
+            <label asp-for="DeptName"></label>
+            <input asp-for="DeptName" class="form-control" />
+            <span asp-validation-for="DeptName" class="text-danger"></span>
+            @*  @Html.ValidationMessageFor(m=>m.DeptName,"Name can not be more than 20 character");
+            *@
+        </div>
+
+       
+
+        @*<div class="mb-3 ">
+            <label asp-for="CreateDateTime"></label>
+            <input asp-for="CreateDateTime" type="date" class="form-control " />
+        </div>*@
+
+        <button type="submit" class="btn btn-success" style="width:100px">Create</button>
+        <a asp-controller="Department" asp-action="Index" class="btn btn-primary">Back</a>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />@*//partial is element tag helper*@
+}
+

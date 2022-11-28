@@ -1,0 +1,48 @@
+﻿@model EmpDeptProject.Models.Models.Employee //able to access properties of model class
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+@*@Html.ActionLink //Action link
+<a></a>//tag helper
+*@
+
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-info">Create Employee</h2>
+            <hr />
+
+        </div>
+        <div asp-validation-summary="All" class="text-danger"></div>@*//iside div only it works*@
+        <div class="mb-3 ">
+            <label asp-for="EmpName"></label>
+            <input asp-for="EmpName" class="form-control" />
+            <span asp-validation-for="EmpName" class="text-danger"></span>
+            @*  @Html.ValidationMessageFor(m=>m.CategoryName,"Name can not be more than 20 character");
+            *@
+        </div>
+
+        <div class="mb-3 ">
+            <label asp-for="EmpSalary"></label>
+            <input asp-for="EmpSalary" class="form-control" />
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Departments.DeptName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col md-10">
+                @Html.DropDownListFor(model=>model.DeptId,(SelectList)ViewBag.DeptId,new{@class="form-control"})
+            </div>
+
+        <button type="submit" class="btn btn-success" style="width:100px">Create</button>
+        <a asp-controller="Employee" asp-action="Index" class="btn btn-primary">Back</a>
+    </div>
+</form>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />@*//partial is element tag helper*@
+}
+
