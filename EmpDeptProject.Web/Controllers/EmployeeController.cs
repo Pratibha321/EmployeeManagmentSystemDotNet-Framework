@@ -129,7 +129,7 @@ namespace EmpDeptProject.Web.Controllers
             _unitOfWork.Employee.Remove(obj);
             _unitOfWork.Save();
             TempData["Success"] = "Category Deleted Successfuly";
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
     }
